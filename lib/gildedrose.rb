@@ -2,6 +2,9 @@ class GildedRose
 
     def initialize(items)
       @items = items
+        if items[0].quality > 50
+            raise "Quality can't exceed 50."
+        end
     end
   
     def update_quality()

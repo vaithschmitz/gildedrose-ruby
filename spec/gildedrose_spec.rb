@@ -14,7 +14,10 @@ describe GildedRose do
             GildedRose.new(items).update_quality()
             expect(items[0].quality).to eq 1
         end
-    
+        it "quality can never exceed 50" do 
+            items = [Item.new("foo", 2, 51)]
+            expect{GildedRose.new(items)}.to raise_error("Quality can't exceed 50.")
+        end 
     end
 
   end
