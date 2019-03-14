@@ -18,6 +18,10 @@ describe GildedRose do
             items = [Item.new("foo", 2, 51)]
             expect{GildedRose.new(items)}.to raise_error("Quality can't exceed 50.")
         end 
+        it "GR won't accept items with negative quality" do 
+            items = [Item.new("foo", 2, -4)]
+            expect{GildedRose.new(items)}.to raise_error("Quality can't be negative.")
+        end 
     end
 
   end

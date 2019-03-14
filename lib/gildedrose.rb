@@ -5,6 +5,9 @@ class GildedRose
         if items[0].quality > 50
             raise "Quality can't exceed 50."
         end
+        if items[0].quality < 0
+            raise "Quality can't be negative."
+        end
     end
   
     def update_quality()
