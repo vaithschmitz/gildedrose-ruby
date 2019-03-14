@@ -20,6 +20,14 @@ describe GildedRose do
             expect{GildedRose.new(items)}.to raise_error("Quality can't be negative.")
         end 
     end
+
+    context 'appreciation' do
+        it 'Aged Brie appreciates in quality with age' do 
+            items = [Item.new("Aged Brie", 2, 10)]
+            GildedRose.new(items).update_quality()
+            expect(items[0].quality).to eq 11
+        end 
+    end
         
     context 'depreciation' do
         it "(pre sell-in) quality depreciates by 1 every EOD" do 

@@ -38,7 +38,9 @@ class GildedRose
         # if item.name != "Sulfuras, Hand of Ragnaros"
         #   item.sell_in = item.sell_in - 1
         # end
-        if (item.sell_in <= 0 && (item.name != "Aged Brie" || item.name != "Backstage passes to a TAFKAL80ETC concert" || item.name != "Sulfuras, Hand of Ragnaros") && item.quality > 0)
+        if item.name == "Aged Brie" && item.quality < 50
+            item.quality += 1
+        elsif (item.sell_in <= 0 && (item.name != "Aged Brie" || item.name != "Backstage passes to a TAFKAL80ETC concert" || item.name != "Sulfuras, Hand of Ragnaros") && item.quality > 0)
             item.quality -= 2
         elsif (item.sell_in > 0 && (item.name != "Aged Brie" || "Backstage passes to a TAFKAL80ETC concert" || "Sulfuras, Hand of Ragnaros") && item.quality > 0)
             item.quality -= 1 
