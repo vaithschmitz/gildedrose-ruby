@@ -27,6 +27,25 @@ describe GildedRose do
             GildedRose.new(items).update_quality()
             expect(items[0].quality).to eq 11
         end 
+
+        it "Backstage passes normal increase" do 
+            items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 11, 30)]
+            GildedRose.new(items).update_quality()
+            expect(items[0].quality).to eq 31
+        end
+
+        it "Backstage passes 10 days out" do 
+            items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 30)]
+            GildedRose.new(items).update_quality()
+            expect(items[0].quality).to eq 32
+        end
+
+        it "Backstage passes 5 days out" do 
+            items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 5, 30)]
+            GildedRose.new(items).update_quality()
+            expect(items[0].quality).to eq 33
+        end
+
     end
         
     context 'depreciation' do
@@ -46,6 +65,12 @@ describe GildedRose do
             GildedRose.new(items).update_quality()
             expect(items[0].quality).to eq 20
         end 
+
+        it "Backstage passes sellin date < 0" do
+            items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 0, 30)]
+            GildedRose.new(items).update_quality()
+            expect(items[0].quality).to eq 0
+        end
     end
 
   end

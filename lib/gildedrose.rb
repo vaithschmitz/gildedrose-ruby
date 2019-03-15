@@ -40,10 +40,20 @@ class GildedRose
         # end
         if item.name == "Aged Brie" && item.quality < 50
             item.quality += 1
+        elsif item.name == "Backstage passes to a TAFKAL80ETC concert"
+            if item.sell_in <= 0 
+                item.quality = 0
+            elsif item.sell_in <= 5
+                item.quality += 3
+            elsif item.sell_in <= 10 
+                item.quality += 2
+            elsif item.quality < 50
+                item.quality += 1
+            end
         elsif item.name == "Sulfuras, Hand of Ragnaros"
             return
         elsif (item.sell_in <= 0 && (item.name != "Aged Brie" || item.name != "Backstage passes to a TAFKAL80ETC concert" || item.name != "Sulfuras, Hand of Ragnaros") && item.quality > 0)
-            item.quality -= 2
+            item.quality > 1 ? item.quality -= 2 : item.quality = 0
         elsif (item.sell_in > 0 && (item.name != "Aged Brie" || "Backstage passes to a TAFKAL80ETC concert" || "Sulfuras, Hand of Ragnaros") && item.quality > 0)
             item.quality -= 1 
         end
